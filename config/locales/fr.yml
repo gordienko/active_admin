@@ -26,21 +26,13 @@ fr:
         filter: "Filtrer"
         clear: "Supprimer les filtres"
       predicates:
-        contains: "Contient"
-        equals: "Égal à"
-        starts_with: "Commence par"
-        ends_with: "Se termine par"
-        greater_than: "Plus grand que"
-        less_than: "Plus petit que"
-        gteq_datetime: "Ultérieur ou égal à"
-        lteq_datetime: "Antérieur ou égal à"
         from: "De"
         to: "À"
     search_status:
       headline: "Statut de la recherche :"
-      current_scope: "Etendu du filtre :"
+      current_scope: "Périmètre :"
       current_filters: "Filtres actuels :"
-      no_current_filters: "Aucun filtres"
+      no_current_filters: "Aucun filtre"
     status_tag:
       "yes": "Oui"
       "no": "Non"
@@ -52,7 +44,7 @@ fr:
       filters: "Filtres"
       search_status: "Statut de la recherche"
     pagination:
-      empty: "Aucun %{model} trouvé"
+      empty: "Aucun(e) %{model} trouvé(e)"
       one: "Affichage de <b>1</b> %{model}"
       one_page: "Affichage des <b>%{n}</b> %{model}"
       multiple: "Affichage de %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> sur un total de <b>%{total}</b>"
@@ -128,10 +120,6 @@ fr:
         sign_in_with_omniauth_provider: "Connectez-vous avec %{provider}"
         resend_unlock_instructions: "Renvoyer les informations de déverrouillage"
         resend_confirmation_instructions: "Renvoyer les instructions de confirmation"
-    unsupported_browser:
-      headline: "Veuillez noter que ActiveAdmin ne supporte plus les versions d'Internet Explorer 8 ou moins."
-      recommendation: "Nous vous recommandons de <a href=\"http://browsehappy.com/\">mettre à jour votre navigateur</a> pour améliorer votre expérience."
-      turn_off_compatibility_view: "Si vous utilisez IE 9 ou une version ultérieure, assurez-vous d'<a href=\"https://support.microsoft.com/fr-fr/help/17471\">activer \"Affichage de compatibilité\"</a>."
     access_denied:
       message: "Vous n'êtes pas autorisé à exécuter cette action"
     index_list:

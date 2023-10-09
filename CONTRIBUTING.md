@@ -25,8 +25,7 @@ git checkout -b 325-add-japanese-translations
 
 ### Get the test suite running
 
-Make sure you're using a recent ruby and have the `bundler` gem installed, at
-least version `1.14.3`.
+Make sure you're using a recent Ruby version.
 
 You'll also need chrome installed in order to run cucumber scenarios.
 
@@ -56,8 +55,8 @@ Now you should be able to run the entire suite using:
 bin/rake
 ```
 
-The test run will generate a sample Rails application in `tmp/test_apps` to run the
-tests against.
+The task will generate a sample Rails application in `tmp/test_apps` to run the
+test suite against.
 
 If you want to test against a Rails version different from the latest, make sure
 you use the correct Gemfile, for example:
@@ -107,13 +106,6 @@ with the db:
 ```sh
 bin/rake local db:migrate
 ```
-
-### Get the style right
-
-Your patch should follow the same conventions & pass the same code quality
-checks as the rest of the project. `bin/rake lint` will give you feedback in
-this regard. You can check & fix style issues by running each linter
-individually. Run `bin/rake -T lint` to see the available linters.
 
 ### Make a Pull Request
 
@@ -183,11 +175,11 @@ Maintainers need to do the following to push out a release:
 * Run `bin/rake release` from the target branch once the PR is merged.
 
 [chandler]: https://github.com/mattbrictson/chandler#2-configure-credentials
-[Stack Overflow]: http://stackoverflow.com/questions/tagged/activeadmin
+[Stack Overflow]: https://stackoverflow.com/questions/tagged/activeadmin
 [new issue]: https://github.com/activeadmin/activeadmin/issues/new
 [fork Active Admin]: https://help.github.com/articles/fork-a-repo
 [make a pull request]: https://help.github.com/articles/creating-a-pull-request
-[git rebasing]: http://git-scm.com/book/en/Git-Branching-Rebasing
+[git rebasing]: https://git-scm.com/book/en/Git-Branching-Rebasing
 [interactive rebase]: https://help.github.com/en/github/using-git/about-git-rebase
 [shortcut reference links]: https://github.github.com/gfm/#shortcut-reference-link
 [Rollup]: https://rollupjs.org/guide/en/#quick-start

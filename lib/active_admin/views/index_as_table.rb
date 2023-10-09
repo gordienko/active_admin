@@ -304,10 +304,6 @@ module ActiveAdmin
           end
         end
 
-        def default_actions
-          raise "`default_actions` is no longer provided in ActiveAdmin 1.x. Use `actions` instead."
-        end
-
         # Add links to perform actions.
         #
         # ```ruby
@@ -377,7 +373,7 @@ module ActiveAdmin
           if controller.action_methods.include?("show") && authorized?(ActiveAdmin::Auth::READ, resource)
             item localizer.t(:view), resource_path(resource), class: "view_link #{options[:css_class]}", title: localizer.t(:view)
           end
-          if controller.action_methods.include?("edit") && authorized?(ActiveAdmin::Auth::UPDATE, resource)
+          if controller.action_methods.include?("edit") && authorized?(ActiveAdmin::Auth::EDIT, resource)
             item localizer.t(:edit), edit_resource_path(resource), class: "edit_link #{options[:css_class]}", title: localizer.t(:edit)
           end
           if controller.action_methods.include?("destroy") && authorized?(ActiveAdmin::Auth::DESTROY, resource)

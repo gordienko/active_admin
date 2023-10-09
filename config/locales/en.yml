@@ -1,4 +1,11 @@
 en:
+  views:
+    pagination:
+      first: "First"
+      last: "Last"
+      previous: "Previous"
+      next: "Next"
+      # truncate: "&hellip;"
   activerecord:
     models:
       comment:
@@ -43,14 +50,6 @@ en:
         filter: "Filter"
         clear: "Clear Filters"
       predicates:
-        contains: "Contains"
-        equals: "Equals"
-        starts_with: "Starts with"
-        ends_with: "Ends with"
-        greater_than: "Greater than"
-        less_than: "Less than"
-        gteq_datetime: "Greater or equal to"
-        lteq_datetime: "Lesser or equal to"
         from: "From"
         to: "To"
     scopes:
@@ -63,7 +62,7 @@ en:
     status_tag:
       "yes": "Yes"
       "no": "No"
-      "unset": "No"
+      "unset": "Unknown"
     main_content: "Please implement %{model}#main_content to display content."
     logout: "Logout"
     powered_by: "Powered by %{active_admin} %{version}"
@@ -72,10 +71,10 @@ en:
       search_status: "Search Status"
     pagination:
       empty: "No %{model} found"
-      one: "Displaying <b>1</b> %{model}"
-      one_page: "Displaying <b>all %{n}</b> %{model}"
-      multiple: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{total}</b> in total"
-      multiple_without_total: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b>"
+      one: "Showing <b>1</b> %{model}"
+      one_page: "Showing <b>all %{n}</b> %{model}"
+      multiple: "Showing <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{total}</b>"
+      multiple_without_total: "Showing <b>%{from}&nbsp;-&nbsp;%{to}</b>"
       per_page: "Per page: "
       entry:
         one: "entry"
@@ -149,10 +148,6 @@ en:
         sign_in_with_omniauth_provider: "Sign in with %{provider}"
         resend_unlock_instructions: "Resend unlock instructions"
         resend_confirmation_instructions: "Resend confirmation instructions"
-    unsupported_browser:
-      headline: "Please note that ActiveAdmin no longer supports Internet Explorer versions 8 or less."
-      recommendation: "We recommend that you <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
-      turn_off_compatibility_view: "If you are using IE 9 or later, make sure you <a href=\"https://support.microsoft.com/en-us/help/17471\">turn off \"Compatibility View\"</a>."
     access_denied:
       message: "You are not authorized to perform this action."
     index_list:

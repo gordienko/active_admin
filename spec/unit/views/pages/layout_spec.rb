@@ -2,6 +2,8 @@
 require "rails_helper"
 
 RSpec.describe ActiveAdmin::Views::Pages::Layout do
+  let(:active_admin_application) { ActiveAdmin::Application.new }
+  let(:active_admin_namespace) { ActiveAdmin::Namespace.new(active_admin_application, :myspace) }
   let(:assigns) { {} }
   let(:helpers) do
     helpers = mock_action_view
@@ -9,7 +11,8 @@ RSpec.describe ActiveAdmin::Views::Pages::Layout do
     { active_admin_application: active_admin_application,
       active_admin_config: double("Config", action_items?: nil, breadcrumb: nil, sidebar_sections?: nil),
       active_admin_namespace: active_admin_namespace,
-      csrf_meta_tag: "",
+      csrf_meta_tags: "",
+      csp_meta_tag: "",
       current_active_admin_user: nil,
       current_active_admin_user?: false,
       current_menu: double("Menu", items: []),
@@ -21,13 +24,6 @@ RSpec.describe ActiveAdmin::Views::Pages::Layout do
 
     helpers
   end
-
-  let(:active_admin_namespace) do
-    application = ActiveAdmin::Application.new
-    application.use_webpacker = ActiveAdmin.application.use_webpacker
-    ActiveAdmin::Namespace.new(ActiveAdmin.application, :myspace)
-  end
-  let(:active_admin_application) { ActiveAdmin.application }
 
   let(:layout) do
     render_arbre_component assigns, helpers do
@@ -49,15 +45,5 @@ RSpec.describe ActiveAdmin::Views::Pages::Layout do
 
   it "should have lang attribute on the html element" do
     expect(layout.attributes[:lang]).to eq :en
-  end
-
-  describe "the body" do
-    it "should have class 'active_admin'" do
-      expect(layout.build.class_list).to include "active_admin"
-    end
-
-    it "should have namespace class" do
-      expect(layout.build.class_list).to include "#{active_admin_namespace.name}_namespace"
-    end
   end
 end

@@ -85,9 +85,6 @@ module ActiveAdmin
     # A proc to be used when a user is not authorized to view the current resource
     register :on_unauthorized_access, :rescue_active_admin_access_denied
 
-    # A regex to detect unsupported browser, set to false to disable
-    register :unsupported_browser_matcher, /MSIE [1-8]\.0/
-
     # Whether to display 'Current Filters' on search screen
     register :current_filters, true
 
@@ -119,9 +116,6 @@ module ActiveAdmin
         :title,
         :email,
     ]
-    register :filter_method_for_large_association, "_starts_with"
-
-    # Switch between asset pipeline and webpacker assets
-    register :use_webpacker, false
+    register :filter_method_for_large_association, "_start"
   end
 end

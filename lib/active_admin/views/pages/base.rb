@@ -30,7 +30,7 @@ module ActiveAdmin
             text_node(active_admin_namespace.head)
 
             active_admin_application.stylesheets.each do |style, options|
-              stylesheet_tag = active_admin_namespace.use_webpacker ? stylesheet_pack_tag(style, **options) : stylesheet_link_tag(style, **options)
+              stylesheet_tag = stylesheet_link_tag(style, **options)
               text_node(stylesheet_tag.html_safe) if stylesheet_tag
             end
 
@@ -38,25 +38,25 @@ module ActiveAdmin
               text_node(meta(name: name, content: content))
             end
 
-            active_admin_application.javascripts.each do |path|
-              javascript_tag = active_admin_namespace.use_webpacker ? javascript_pack_tag(path) : javascript_include_tag(path)
+            active_admin_application.javascripts.each do |path, options|
+              javascript_tag = javascript_include_tag(path, **options)
               text_node(javascript_tag)
             end
 
             if active_admin_namespace.favicon
               favicon = active_admin_namespace.favicon
-              favicon_tag = active_admin_namespace.use_webpacker ? favicon_pack_tag(favicon) : favicon_link_tag(favicon)
+              favicon_tag = favicon_link_tag(favicon)
               text_node(favicon_tag)
             end
 
-            text_node csrf_meta_tag
+            text_node csrf_meta_tags
+            text_node csp_meta_tag
           end
         end
 
         def build_page
-          within body(class: body_classes) do
+          within body(data_attributes) do
             div id: "wrapper" do
-              build_unsupported_browser
               header active_admin_namespace, current_menu
               title_bar title, action_items_for_action
               build_page_content
@@ -65,24 +65,18 @@ module ActiveAdmin
           end
         end
 
-        def body_classes
-          Arbre::HTML::ClassList.new [
-            params[:action],
-            params[:controller].tr("/", "_"),
-            "active_admin", "logged_in",
-            active_admin_namespace.name.to_s + "_namespace"
-          ]
-        end
-
-        def build_unsupported_browser
-          if active_admin_namespace.unsupported_browser_matcher =~ controller.request.user_agent
-            unsupported_browser
-          end
+        def data_attributes
+          {
+            "data-rails-action": params[:action],
+            "data-rails-controller": params[:controller].tr("/", "_"),
+            "data-active-admin-namespace": active_admin_namespace.name.to_s,
+            "data-active-admin-logged-in": "true"
+          }
         end
 
         def build_page_content
           build_flash_messages
-          div id: "active_admin_content", class: (skip_sidebar? ? "without_sidebar" : "with_sidebar") do
+          div class: "page-content-container" do
             build_main_content_wrapper
             sidebar sidebar_sections_for_action, id: "sidebar" unless skip_sidebar?
           end
@@ -99,10 +93,8 @@ module ActiveAdmin
         end
 
         def build_main_content_wrapper
-          div id: "main_content_wrapper" do
-            div id: "main_content" do
-              main_content
-            end
+          div class: "main-content-container" do
+            main_content
           end
         end
 

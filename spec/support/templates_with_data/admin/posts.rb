@@ -4,6 +4,8 @@ ActiveAdmin.register Post do
 
   belongs_to :author, class_name: "User", param: "user_id", route_name: "user"
 
+  config.per_page = [ 5, 10, 20 ]
+
   includes :author, :category, :taggings
 
   scope :all, default: true
@@ -24,7 +26,7 @@ ActiveAdmin.register Post do
     posts.where(author_id: current_admin_user.id)
   end
 
-  batch_action :set_starred, form: { starred: :checkbox } do |ids, inputs|
+  batch_action :set_starred, partial: "starred_batch_action_form", link_html_options: { "data-modal-toggle": "starred-batch-action-modal" } do |ids, inputs|
     Post.where(id: ids).update_all(starred: inputs["starred"].present?)
     redirect_to collection_path(user_id: params["user_id"]), notice: "The posts have been updated."
   end

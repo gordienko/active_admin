@@ -1,10 +1,11 @@
 {
   "name": "@activeadmin/activeadmin",
-  "version": "2.13.1",
+  "version": "3.0.0",
   "description": "The administration framework for Ruby on Rails.",
-  "main": "app/assets/javascripts/active_admin/base.js",
+  "main": "app/assets/javascripts/active_admin.js",
+  "type": "module",
   "files": [
-    "app/assets/javascripts/active_admin/*.js",
+    "app/assets/javascripts/*.js",
     "src/**/*"
   ],
   "repository": {
@@ -13,6 +14,7 @@
   },
   "keywords": [
     "administration",
+    "administrative",
     "rails"
   ],
   "author": "David Rodríguez <deivid.rodriguez@riseup.net>",
@@ -22,17 +24,10 @@
   },
   "homepage": "htts://activeadmin.info",
   "devDependencies": {
-    "@babel/core": "",
-    "@babel/preset-env": "",
-    "common-tags": "",
-    "eslint": "",
-    "eslint-plugin-import": "",
-    "gherkin-lint": "",
-    "rollup": "",
-    "rollup-plugin-babel": "",
-    "rollup-plugin-commonjs": "",
-    "rollup-plugin-node-resolve": "",
-    "rollup-plugin-terser": ""
+    "@rollup/plugin-terser": "^0.4.3",
+    "eslint": "^8.46.0",
+    "gherkin-lint": "^4.2.2",
+    "rollup": "^3.27.0"
   },
   "scripts": {
     "gherkin-lint": "gherkin-lint",
@@ -41,8 +36,8 @@
     "prepublishOnly": "rm -rf src && cp -R app/javascript/active_admin src && cp -R app/assets/stylesheets/active_admin src/scss"
   },
   "dependencies": {
-    "jquery": "^3.4.1",
-    "jquery-ui": "^1.12.1",
-    "jquery-ujs": "^1.2.2"
+    "@rails/ujs": "^7.0.6",
+    "flowbite": "^1.7.0",
+    "tailwindcss": "^3.3.3"
   }
 }

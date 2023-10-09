@@ -4,3 +4,6 @@ lib/generators/**/*.js
 tmp/**/*.js
 spec/**/*.js
 src/**/*.js
+coverage/**/*.js
+rails_70/**/*.js
+plugin.js
