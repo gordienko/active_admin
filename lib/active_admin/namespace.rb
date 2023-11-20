@@ -28,7 +28,7 @@ module ActiveAdmin
   class Namespace
     class << self
       def setting(name, default)
-        Deprecation.warn "This method does not do anything and will be removed."
+        ActiveAdmin.deprecator.warn "This method does not do anything and will be removed."
       end
     end
 
@@ -68,7 +68,7 @@ module ActiveAdmin
 
       # Register the resource
       register_resource_controller(config)
-      parse_registration_block(config, &block) if block_given?
+      parse_registration_block(config, &block) if block
       reset_menu!
 
       # Dispatch a registration event
@@ -83,7 +83,7 @@ module ActiveAdmin
 
       # Register the resource
       register_page_controller(config)
-      parse_page_registration_block(config, &block) if block_given?
+      parse_page_registration_block(config, &block) if block
       reset_menu!
 
       config
